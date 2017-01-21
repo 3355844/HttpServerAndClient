@@ -1,4 +1,4 @@
-import java.io.IOException;
+import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -8,12 +8,23 @@ import java.net.Socket;
 public class MainServerRunner {
     public static void main(String[] args) {
         ServerSocket serverSocket;
+        String line;
         try {
             serverSocket = new ServerSocket(9999);
-            while (true){
-                Socket socket = serverSocket.accept();
-                System.err.println("Client accepted");
-                new Thread(new SocketProcessor(socket)).start();
+            System.out.println("Wait for a client....");
+            Socket socket = serverSocket.accept();
+            System.out.println("Got a client");
+            InputStream is = socket.getInputStream();
+            OutputStream os = socket.getOutputStream();
+            DataInputStream dataInputStream = new DataInputStream(is);
+            DataOutputStream dataOutputStream = new DataOutputStream(os);
+
+            while (true) {
+                line = dataInputStream.readUTF();
+                System.out.println("Client sent this  Line: " + line);
+                System.out.println("Sending it back...");
+                dataOutputStream.writeUTF(line);
+                System.out.println("Wait for the next line...");
             }
         } catch (IOException e) {
             e.printStackTrace();
