@@ -9,7 +9,6 @@ public class HttpClientRunner {
     public static void main(String[] args) {
         int serverPort = 9999;
         String address = "127.0.0.1";
-
         try {
             InetAddress inetAddress = InetAddress.getByName(address);
             System.out.println("Any of heart of socket with IP address " + address);
