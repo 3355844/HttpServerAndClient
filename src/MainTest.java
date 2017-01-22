@@ -7,7 +7,6 @@ import java.io.IOException;
  */
 public class MainTest {
     public static void main(String[] args) {
-
         String filePath = "index.html";
         HtmlTransformer htmlTransformer = new HtmlTransformer();
         String column = String.format(htmlTransformer.getColumn(), "Some");
