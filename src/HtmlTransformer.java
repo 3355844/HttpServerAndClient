@@ -59,4 +59,8 @@ public class HtmlTransformer {
         return column;
     }
 
+    @Override
+    public String toString() {
+       return  String.format(getHtml(),getHeadTitle(), getBody());
+    }
 }

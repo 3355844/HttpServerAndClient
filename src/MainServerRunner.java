@@ -8,23 +8,19 @@ import java.net.Socket;
 public class MainServerRunner {
     public static void main(String[] args) {
         ServerSocket serverSocket;
+        HtmlTransformer htmlTransformer = new HtmlTransformer();
+        htmlTransformer.setHeadTitle("My String Title");
+        htmlTransformer.setBody("here can be eny information");
+        String filePath = "index.html";
         String line;
+        PrintWriter printWriter;
         try {
             serverSocket = new ServerSocket(9999);
             System.out.println("Wait for a client....");
-            Socket socket = serverSocket.accept();
-            System.out.println("Got a client");
-            InputStream is = socket.getInputStream();
-            OutputStream os = socket.getOutputStream();
-            DataInputStream dataInputStream = new DataInputStream(is);
-            DataOutputStream dataOutputStream = new DataOutputStream(os);
-
             while (true) {
-                line = dataInputStream.readUTF();
-                System.out.println("Client sent this  Line: " + line);
-                System.out.println("Sending it back...");
-                dataOutputStream.writeUTF(line);
-                System.out.println("Wait for the next line...");
+                Socket socket = serverSocket.accept();
+                System.out.println("Got a client");
+                new Thread(new SocketProcessor(socket, htmlTransformer.toString())).start();
             }
         } catch (IOException e) {
             e.printStackTrace();
