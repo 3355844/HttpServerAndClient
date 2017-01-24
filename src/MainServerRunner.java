@@ -8,10 +8,33 @@ import java.net.Socket;
 public class MainServerRunner {
     public static void main(String[] args) {
         ServerSocket serverSocket;
+        String body = "<form action=\"HttpServer.iml\" method=\"post\" name=\"answer\" >\n" +
+                "\n" +
+                "    <p><input type=\"text\" name=\"name\">Your Name</p>\n" +
+                "    <p>\n" +
+                "        <input type=\"radio\" name=\"sex\" value=\"man\"> Man\n" +
+                "        <input type=\"radio\" name=\"sex\" value=\"women\"> Women\n" +
+                "    </p>\n" +
+                "    <p></p>\n" +
+                "    <p><select name=\"salary\" size=\"1\"  >\n" +
+                "        <option value=\"500\">Start salary 500$</option>\n" +
+                "        <option value=\"600\">Start salary 600$</option>\n" +
+                "        <option value=\"800\">Start salary 800$</option>\n" +
+                "        <option value=\"1000\">Start salary 1000$</option>\n" +
+                "    </select>\n" +
+                "    </p>\n" +
+                "    <p>\n" +
+                "        <input type=\"checkbox\" name=\"transport\" value=\"car\">Car<br />\n" +
+                "        <input type=\"checkbox\" name=\"transport\" value=\"bicycle\">Bicycle<br />\n" +
+                "        <input type=\"checkbox\" name=\"transport\" value=\"motorcycle\">Motorcycle<br />\n" +
+                "        <input type=\"checkbox\" name=\"transport\" value=\"boat\">Boat<br />\n" +
+                "    </p>\n" +
+                "    <p><input type=\"submit\" value=\"OK\"> </p>\n" +
+                "</form>\n";
         HtmlTransformer htmlTransformer = new HtmlTransformer();
         htmlTransformer.setHeadTitle("My String Title");
-        htmlTransformer.setBody("here can be eny information");
-        String filePath = "index.html";
+        htmlTransformer.setBody(body);
+//        String filePath = "index.html";
         String line;
         PrintWriter printWriter;
         try {

@@ -25,6 +25,7 @@ public class SocketProcessor implements Runnable {
     @Override
     public void run() {
         readInputHeaders();
+
         writeResponse(html);
         try {
             socket.close();
@@ -50,16 +51,19 @@ public class SocketProcessor implements Runnable {
 
     private void readInputHeaders() {
         BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
+        StringBuffer buffer = new StringBuffer();
         while (true) {
             try {
                 String s = br.readLine();
+                buffer.append(s);
                 if (s == null || s.trim().length() == 0) {
+                    System.out.print(s);
                     break;
                 }
+                System.out.println(buffer.toString());
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
         }
     }
 }

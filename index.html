@@ -1,11 +1,29 @@
 <!DOCTYPE html>
 <html>
-<head><title>My Title</title></head>
+<head><title></title></head>
 <body>
-<table>
-    <tr>
-        <td>Some</td>
-    <tr>
-</table>
+<form action="HttpServer.iml" method="post" name="answer" >
+
+    <p><input type="text" name="name">Your Name</p>
+    <p>
+        <input type="radio" name="sex" value="man"> Man
+        <input type="radio" name="sex" value="women"> Women
+    </p>
+    <p></p>
+    <p><select name="salary" size="1"  >
+        <option value="500">Start salary 500$</option>
+        <option value="600">Start salary 600$</option>
+        <option value="800">Start salary 800$</option>
+        <option value="1000">Start salary 1000$</option>
+    </select>
+    </p>
+    <p>
+        <input type="checkbox" name="transport" value="car">Car<br />
+        <input type="checkbox" name="transport" value="bicycle">Bicycle<br />
+        <input type="checkbox" name="transport" value="motorcycle">Motorcycle<br />
+        <input type="checkbox" name="transport" value="boat">Boat<br />
+    </p>
+    <p><input type="submit" value="OK"> </p>
+</form>
 </body>
 </html>

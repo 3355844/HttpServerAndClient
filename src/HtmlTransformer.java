@@ -54,7 +54,6 @@ public class HtmlTransformer {
         return row;
     }
 
-
     public String getColumn() {
         return column;
     }
